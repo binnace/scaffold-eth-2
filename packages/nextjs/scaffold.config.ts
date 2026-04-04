@@ -1,4 +1,4 @@
-import { chains } from "@@/utils/scaffold-eth";
+import * as chains from "viem/chains";
 
 export type ScaffoldConfig = {
   targetNetworks: readonly chains.Chain[];
