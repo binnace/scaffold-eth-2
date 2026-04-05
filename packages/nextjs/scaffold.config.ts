@@ -1,9 +1,19 @@
 import * as chains from "viem/chains";
-export const scaffoldConfig = {
-  targetNetworks: [chains.arbitrum],
-  pollingInterval: 30000,
-  alchemyApiKey: "oKsh3787S7u_6uX7AofXf77K_Sjw7mXf",
-  walletConnectProjectId: "3a8170812b53d739d9f453005a610537",
-  onlyLocalBurnerWallet: false,
+
+export type ScaffoldConfig = {
+  targetNetworks: readonly chains.Chain[];
+  pollingInterval: number;
+  alchemyApiKey: string;
+  walletConnectProjectId: string;
+  onlyLocalBurnerWallet: boolean;
 };
+
+const scaffoldConfig = {
+  targetNetworks: [chains.mainnet],
+  pollingInterval: 30000,
+  alchemyApiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || "p8S-ms_rS6hpAnX14zZ67",
+  walletConnectProjectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "3a8170812b534d0ff9d794f19a901d64",
+  onlyLocalBurnerWallet: false,
+} as const;
+
 export default scaffoldConfig;
